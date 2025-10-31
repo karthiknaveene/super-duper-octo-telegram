@@ -3,42 +3,51 @@ pipeline {
 
     stages {
         stage('Build') {
-            steps {
-                echo 'Building...'
-                sh 'sleep 3'
-                sh 'echo "Hello from Build stage!"'
+            stages {
+                stage('Compile') {
+                    steps {
+                        echo 'Compiling...'
+                        sleep 10
+                    }
+                }
+                stage('Package') {
+                    steps {
+                        echo 'Packaging...'
+                        sleep 5
+                    }
+                }
             }
         }
 
-        stage('Test - edited') {
+        stage('Registering build artifact') {
             steps {
-                echo 'Testing...'
-                sh 'sleep 3'
-                sh 'echo "Running some dummy tests..."'
+                echo 'Registering the metadata'
+                echo 'Another echo to make the pipeline a bit more complex'
+                registerBuildArtifactMetadata(
+                    name: "Internal-demo-runs-BT",
+                    version: "1.0.1",
+                    type: "docker",
+                    url: "http://localhost:4001",
+                    digest: "6f637064707039346163663237383761",
+                    label: "Internal-demo-BT-artifact-Prod"
+                )
             }
         }
 
-
-
-     stage('Nwe stage 1 ') {
-                steps {
-                    echo 'Deploying...'
-                    sh 'sleep 1'
-                    sh 'echo "Pretending to deploy..."'
-                    // Intentionally fail the build
-                    // sh 'exit 1'
-                }
+        stage('Test') {
+            steps {
+                echo 'Running Unit Tests...'
+                sleep 10
+                echo 'Running Integration Tests...'
+                sleep 5
             }
+        }
 
-     stage('New stage 2') {
-                steps {
-                    echo 'Deploying...'
-                    sh 'sleep 1'
-                    sh 'echo "Pretending to deploy..."'
-                    // Intentionally fail the build
-                    // sh 'exit 1'
-                }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying...'
+                sleep 5
             }
-        
+        }
     }
 }
