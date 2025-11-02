@@ -29,7 +29,7 @@ pipeline {
                     type: "docker",
                     url: "http://localhost:4001",
                     digest: "6f637064707039346163663237383761",
-                    label: "Internal-demo-BT-artifact-Prod"
+                    label: "BT-artifact-Prod"
                 )
             }
         }
