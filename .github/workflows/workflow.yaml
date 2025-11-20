@@ -5,8 +5,6 @@ on:
   push:
     branches:
       - "*"
-  
-
 jobs:
   run-scheduled-task:
     runs-on: ubuntu-latest
