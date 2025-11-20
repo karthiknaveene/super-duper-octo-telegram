@@ -2,11 +2,10 @@ name: tag
 
 on:
   pull_request_target:
+  workflow_dispatch:
   push:
     branches:
       - "*"
-  
-
 jobs:
   run-scheduled-task:
     runs-on: ubuntu-latest
