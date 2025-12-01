@@ -40,6 +40,7 @@ pipeline {
             steps {
                 echo 'Registering the metadata'
                 echo 'Another echo to make the pipeline a bit more complex'
+                sleep 4
                 registerBuildArtifactMetadata(
                     name: "Internal-demo-runs-BT",
                     version: "1.0.1",
