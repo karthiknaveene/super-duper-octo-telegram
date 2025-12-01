@@ -19,6 +19,23 @@ pipeline {
             }
         }
 
+        stage('Build-1') {
+            stages {
+                stage('Compile') {
+                    steps {
+                        echo 'Compiling...'
+                        sleep 3
+                    }
+                }
+                stage('Package') {
+                    steps {
+                        echo 'Packaging...'
+                        sleep 5
+                    }
+                }
+            }
+        }
+
         stage('Package') {
             steps {
                 echo 'Registering the metadata'
@@ -34,7 +51,7 @@ pipeline {
             }
         }
 
-        stage('Package') {
+        stage('Package-1') {
             steps {
                 echo 'Running Unit Tests...'
                 sleep 10
@@ -43,7 +60,7 @@ pipeline {
             }
         }
 
-         stage('Package') {
+         stage('Package-2') {
             steps {
                 echo 'Running Unit Tests...'
                 sleep 5
