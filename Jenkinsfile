@@ -43,6 +43,15 @@ pipeline {
             }
         }
 
+         stage('Package') {
+            steps {
+                echo 'Running Unit Tests...'
+                sleep 10
+                echo 'Running Integration Tests...'
+                sleep 5
+            }
+        }
+
         stage('Deploy') {
             steps {
                 echo 'Deploying...'
