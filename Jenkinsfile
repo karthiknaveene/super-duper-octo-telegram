@@ -19,7 +19,7 @@ pipeline {
             }
         }
 
-        stage('Registering build artifact') {
+        stage('Package') {
             steps {
                 echo 'Registering the metadata'
                 echo 'Another echo to make the pipeline a bit more complex'
@@ -34,19 +34,19 @@ pipeline {
             }
         }
 
-        stage('Test') {
+        stage('Package') {
             steps {
                 echo 'Running Unit Tests...'
                 sleep 10
                 echo 'Running Integration Tests...'
-                sleep 5
+                sleep 2
             }
         }
 
          stage('Package') {
             steps {
                 echo 'Running Unit Tests...'
-                sleep 10
+                sleep 5
                 echo 'Running Integration Tests...'
                 sleep 5
             }
