@@ -31,7 +31,7 @@ pipeline {
                     steps {
                         catchError(buildResult: 'UNSTABLE', stageResult: 'UNSTABLE') {
                             echo 'Packaging...'
-                            sleep 2
+                            sleep 20
                             echo 'Forcing UNSTABLE status'
                             sh 'exit 1'
                         }
