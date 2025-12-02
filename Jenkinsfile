@@ -31,6 +31,7 @@ pipeline {
                     steps {
                         echo 'Packaging...'
                         sleep 2
+                        exit 1
                     }
                 }
             }
