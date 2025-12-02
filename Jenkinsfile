@@ -13,7 +13,7 @@ pipeline {
                 stage('Package') {
                     steps {
                         echo 'Packaging...'
-                        sleep 5
+                        sleep 6
                     }
                 }
             }
@@ -31,7 +31,7 @@ pipeline {
                     steps {
                         catchError(buildResult: 'UNSTABLE', stageResult: 'UNSTABLE') {
                             echo 'Packaging...'
-                            sleep 20
+                            sleep 2
                             echo 'Forcing UNSTABLE status'
                             sh 'exit 1'
                         }
@@ -44,7 +44,7 @@ pipeline {
             steps {
                 echo 'Registering the metadata'
                 echo 'Another echo to make the pipeline a bit more complex'
-                sleep 4
+                sleep 40
                 registerBuildArtifactMetadata(
                     name: "Internal-demo-runs-BT",
                     version: "1.0.1",
