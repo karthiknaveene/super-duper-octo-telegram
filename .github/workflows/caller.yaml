@@ -10,7 +10,7 @@ jobs:
       node-version: "20"
       run-tests: true
   reusable-2:
-    uses: ./.github/workflows/reusable-workflow.yaml
+    uses: ./.github/workflows/reusable-workflow-2.yaml
     with:
-      node-version: "20"
+      node-version: "24"
       run-tests: false
