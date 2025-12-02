@@ -7,7 +7,7 @@ pipeline {
                 stage('Compile') {
                     steps {
                         echo 'Compiling...'
-                        sleep 10
+                        sleep 2
                     }
                 }
                 stage('Package') {
@@ -19,9 +19,10 @@ pipeline {
             }
         }
 
-        stage('Registering build artifact') {
+        stage('Compile') {
             steps {
                 echo 'Registering the metadata'
+                sleep 3
                 echo 'Another echo to make the pipeline a bit more complex'
                 registerBuildArtifactMetadata(
                     name: "Internal-demo-runs-BT",
@@ -40,6 +41,23 @@ pipeline {
                 sleep 10
                 echo 'Running Integration Tests...'
                 sleep 5
+            }
+        }
+
+        stage('Build-2') {
+            stages {
+                stage('Compile-2') {
+                    steps {
+                        echo 'Compiling...'
+                        sleep 5
+                    }
+                }
+                stage('Package') {
+                    steps {
+                        echo 'Packaging...'
+                        sleep 5
+                    }
+                }
             }
         }
 
