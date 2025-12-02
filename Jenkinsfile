@@ -35,10 +35,10 @@ pipeline {
             }
         }
 
-        stage('Test') {
+        stage('Package') {
             steps {
                 echo 'Running Unit Tests...'
-                sleep 10
+                sleep 2
                 echo 'Running Integration Tests...'
                 sleep 5
             }
@@ -46,7 +46,7 @@ pipeline {
 
         stage('Build-2') {
             stages {
-                stage('Compile-2') {
+                stage('Compile') {
                     steps {
                         echo 'Compiling...'
                         sleep 5
