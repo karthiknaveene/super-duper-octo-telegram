@@ -13,7 +13,7 @@ pipeline {
                 stage('Package') {
                     steps {
                         echo 'Packaging...'
-                        sleep 6
+                        sleep 7
                     }
                 }
             }
@@ -74,6 +74,27 @@ pipeline {
                     echo "Aborting this stage intentionally..."
                     // This throws an InterruptedException → Jenkins marks stage ABORTED
                     error("ABORTED_BY_SCRIPT")
+                }
+            }
+        }
+
+        stage('Build-2') {
+            stages {
+                stage('Compile') {
+                    steps {
+                        echo 'Compiling...'
+                        sleep 4
+                    }
+                }
+                stage('Package') {
+                    steps {
+                        catchError(buildResult: 'UNSTABLE', stageResult: 'UNSTABLE') {
+                            echo 'Packaging...'
+                            sleep 2
+                            echo 'Forcing UNSTABLE status'
+                            sh 'exit 1'
+                        }
+                    }
                 }
             }
         }
