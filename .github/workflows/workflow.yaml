@@ -17,13 +17,11 @@ jobs:
         uses: actions/checkout@v3
         
       - name: register-artifact-step-with-options
-        uses: cloudbees-io-gha/register-build-artifact@v3
+        uses: cloudbees-io-gha/label-artifact-version@v1
         with:
           cloudbees-url: "https://api.saas-preprod.beescloud.com"
-          name: test
-          url: https://hub.docker.com/repository/docker/hackers
-          version: 1.0.0
-          label: "For Testing GHA integration"
+          artifact-id: test
+          labels: "For Testing GHA integration"
 
   run-scheduled-task-1:
     runs-on: ubuntu-latest
