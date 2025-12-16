@@ -34,7 +34,7 @@ jobs:
         with:
           cloudbees-url: "https://api.saas-qa.beescloud.com"
           artifact-id: ${{ steps.go-action.outputs.cbp_artifact_id }}
-          labels: "For test-1"
+          labels: "test"
           operation: REMOVE
 
       - name: Label Artifact -- add
