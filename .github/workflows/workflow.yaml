@@ -23,7 +23,7 @@ jobs:
           url: "docker.io/example:latest"
           cloudbees-url: "https://api.saas-qa.beescloud.com"
           digest: "sha256:1234567890abcdefghijklmnopqrstuvwxyz1234567890abcdefghijklmnopqr"
-          label: "For testing"
+          label: "For testing long long long long"
           type: "docker"
 
       - name: Registered Build ArtifactId
@@ -34,7 +34,7 @@ jobs:
         with:
           cloudbees-url: "https://api.saas-qa.beescloud.com"
           artifact-id: ${{ steps.go-action.outputs.cbp_artifact_id }}
-          labels: "For testing"
+          labels: "For production"
           operation: REMOVE
 
       - name: Label Artifact -- add
@@ -42,4 +42,4 @@ jobs:
         with:
           cloudbees-url: "https://api.saas-qa.beescloud.com"
           artifact-id: ${{ steps.go-action.outputs.cbp_artifact_id }}
-          labels: "For production"
+          labels: "New"
