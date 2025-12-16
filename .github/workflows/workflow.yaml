@@ -19,6 +19,7 @@ jobs:
       - name: register-artifact-step-with-options
         uses: cloudbees-io-gha/register-build-artifact@v3
         with:
+          cloudbees-url: "https://api.saas-preprod.beescloud.com"
           name: test
           url: https://hub.docker.com/repository/docker/hackers
           version: 1.0.0
