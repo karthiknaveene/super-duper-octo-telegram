@@ -24,7 +24,7 @@ jobs:
           url: https://hub.docker.com/repository/docker/hackers
           version: 1.0.2
           label: "Comp-long"
-          component-id : "b6aa8e35-6b59-42b9-9569-2358df53d4ba"
+          #component-id : "b6aa8e35-6b59-42b9-9569-2358df53d4ba"
 
       - name: register-artifact-step-with-options - no comp
         uses: cloudbees-io-gha/label-artifact-version@v1
