@@ -22,9 +22,9 @@ jobs:
           cloudbees-url : "https://api.saas-preprod.beescloud.com"
           name: Docker-artifact
           url: https://hub.docker.com/repository/docker/hackers
-          version: 1.0.0
+          version: 1.0.2
           label: "Comp"
-          component-id : "b46aedc4-cc00-42f8-910f-f79e2c09e4cd"
+          component-id : "b6aa8e35-6b59-42b9-9569-2358df53d4ba"
 
       - name: register-artifact-step-with-options - no comp
         uses: cloudbees-io-gha/register-build-artifact@v3
@@ -32,7 +32,7 @@ jobs:
           cloudbees-url : "https://api.saas-preprod.beescloud.com"
           name: KN-Docker-artifact
           url: https://hub.docker.com/repository/docker/hackers
-          version: 1.0.1
+          version: 1.0.2
           label: "No comp"
           
 
