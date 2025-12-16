@@ -14,10 +14,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
         
-      - name: Run some scheduled task
-        run: |
-          echo "This is a scheduled run every 5 minutes."
-          # Your actual commands can go here, like tests, builds, etc.
+      - name: register-artifact-step-with-options
+        uses: cloudbees-io-gha/register-build-artifact@v3
+        with:
+          name: test
+          url: https://hub.docker.com/repository/docker/hackers
+          version: 1.0.0
+          label: "For Testing GHA integration"
 
   run-scheduled-task-1:
     runs-on: ubuntu-latest
