@@ -1,47 +1,45 @@
-name: tag
+name: Label artifacts
 
 on:
-  pull_request:
-  workflow_dispatch:
-  push:
-    branches:
-      - "*"
+    workflow_dispatch:
+    push:
+      branches:
+        -"*"
+
 jobs:
-  run-scheduled-task:
+  build:
     runs-on: ubuntu-latest
     permissions:
       id-token: write
-    
+      contents: read
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-        
-      - name: register-artifact-step-with-options
-        uses: cloudbees-io-gha/register-build-artifact@v3
-        with:
-          cloudbees-url : "https://api.saas-qa.beescloud.com"
-          name: Docker-artifact
-          url: https://hub.docker.com/repository/docker/hackers
-          version: 1.0.2
-          label: "Comp-long"
-          #component-id : "b6aa8e35-6b59-42b9-9569-2358df53d4ba"
 
-      - name: register-artifact-step-with-options - no comp
+      - name: Register Build Artifact in Cloudbees Platform
+        uses: cloudbees-io-gha/register-build-artifact@v3
+        id: go-action
+        with:
+          name: "gha-artifact-test"
+          version: 1.0.0
+          url: "docker.io/example:latest"
+          cloudbees-url: "https://api.saas-qa.beescloud.com"
+          digest: "sha256:1234567890abcdefghijklmnopqrstuvwxyz1234567890abcdefghijklmnopqr"
+          label: "For testing"
+          type: "docker"
+
+      - name: Registered Build ArtifactId
+        run: echo 'Registered Build ArtifactId ${{ steps.go-action.outputs.cbp_artifact_id }}'
+
+      - name: Label Artifact -- remove
         uses: cloudbees-io-gha/label-artifact-version@v1
         with:
-          cloudbees-url : "https://api.saas-qa.beescloud.com"
-          artifact-id : KN-Docker-artifact
-          labels: "No comp"
-          
+          cloudbees-url: "https://api.saas-qa.beescloud.com"
+          artifact-id: ${{ steps.go-action.outputs.cbp_artifact_id }}
+          labels: "For testing"
+          operation: REMOVE
 
-  run-scheduled-task-1:
-    runs-on: ubuntu-latest
-    
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-        
-      - name: Run some scheduled task
-        run: |
-          echo "This is a scheduled run every 5 minutes."
-          # Your actual commands can go here, like tests, builds, etc.
+      - name: Label Artifact -- add
+        uses: cloudbees-io-gha/label-artifact-version@v1
+        with:
+          cloudbees-url: "https://api.saas-qa.beescloud.com"
+          artifact-id: ${{ steps.go-action.outputs.cbp_artifact_id }}
+          labels: "For production"
