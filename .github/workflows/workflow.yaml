@@ -17,11 +17,22 @@ jobs:
         uses: actions/checkout@v3
         
       - name: register-artifact-step-with-options
-        uses: cloudbees-io-gha/label-artifact-version@v1
+        uses: cloudbees-io-gha/register-build-artifact@v3
         with:
-          cloudbees-url: "https://api.saas-preprod.beescloud.com"
-          artifact-id: test
-          labels: "For Testing GHA integration"
+          name: Docker-artifact
+          url: https://hub.docker.com/repository/docker/hackers
+          version: 1.0.0
+          label: "Comp"
+          component-id : "b46aedc4-cc00-42f8-910f-f79e2c09e4cd"
+
+      - name: register-artifact-step-with-options - no comp
+        uses: cloudbees-io-gha/register-build-artifact@v3
+        with:
+          name: KN-Docker-artifact
+          url: https://hub.docker.com/repository/docker/hackers
+          version: 1.0.0
+          label: "No comp"
+          
 
   run-scheduled-task-1:
     runs-on: ubuntu-latest
