@@ -30,7 +30,7 @@ jobs:
         uses: cloudbees-io-gha/label-artifact-version@v1
         with:
           cloudbees-url : "https://api.saas-preprod.beescloud.com"
-          artifact-id:: KN-Docker-artifact
+          artifact-id : KN-Docker-artifact
           labels: "No comp long long long long"
           
 
