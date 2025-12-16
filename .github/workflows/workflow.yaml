@@ -23,7 +23,7 @@ jobs:
           url: "docker.io/example:latest"
           cloudbees-url: "https://api.saas-qa.beescloud.com"
           digest: "sha256:1234567890abcdefghijklmnopqrstuvwxyz1234567890abcdefghijklmnopqr"
-          label: "For test-1"
+          label: "test"
           type: "docker"
 
       - name: Registered Build ArtifactId
