@@ -18,28 +18,28 @@ jobs:
         uses: cloudbees-io-gha/register-build-artifact@v3
         id: go-action
         with:
-          name: "gha-artifact-test"
-          version: 1.0.0
+          name: "gha-artifact-test-1"
+          version: 1.0.1
           url: "docker.io/example:latest"
           cloudbees-url: "https://api.saas-qa.beescloud.com"
           digest: "sha256:1234567890abcdefghijklmnopqrstuvwxyz1234567890abcdefghijklmnopqr"
-          label: "For test"
+          label: "For test-1"
           type: "docker"
 
       - name: Registered Build ArtifactId
         run: echo 'Registered Build ArtifactId ${{ steps.go-action.outputs.cbp_artifact_id }}'
 
-      # - name: Label Artifact -- remove
-      #   uses: cloudbees-io-gha/label-artifact-version@v1
-      #   with:
-      #     cloudbees-url: "https://api.saas-qa.beescloud.com"
-      #     artifact-id: ${{ steps.go-action.outputs.cbp_artifact_id }}
-      #     labels: "For test"
-      #     operation: REMOVE
+      - name: Label Artifact -- remove
+        uses: cloudbees-io-gha/label-artifact-version@v1
+        with:
+          cloudbees-url: "https://api.saas-qa.beescloud.com"
+          artifact-id: ${{ steps.go-action.outputs.cbp_artifact_id }}
+          labels: "For test-1"
+          operation: REMOVE
 
       - name: Label Artifact -- add
         uses: cloudbees-io-gha/label-artifact-version@v1
         with:
           cloudbees-url: "https://api.saas-qa.beescloud.com"
           artifact-id: ${{ steps.go-action.outputs.cbp_artifact_id }}
-          labels: "New long long long long long"
+          labels: "New long"
