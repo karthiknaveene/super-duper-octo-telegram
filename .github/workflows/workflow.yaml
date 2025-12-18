@@ -22,7 +22,7 @@ jobs:
           version: 1.0.1
           url: "docker.io/example:latest"
           digest: "sha256:1234567890abcdefghijklmnopqrstuvwxyz1234567890abcdefghijklmnopqr"
-          label: "test long"
+          label: "test long long long long"
           type: "docker"
 
       - name: Registered Build ArtifactId
