@@ -21,7 +21,6 @@ jobs:
           name: "gha-artifact-test-1"
           version: 1.0.1
           url: "docker.io/example:latest"
-          cloudbees-url: "https://api.saas-qa.beescloud.com"
           digest: "sha256:1234567890abcdefghijklmnopqrstuvwxyz1234567890abcdefghijklmnopqr"
           label: "test long long long long long"
           type: "docker"
@@ -32,7 +31,6 @@ jobs:
       - name: Label Artifact -- remove
         uses: cloudbees-io-gha/label-artifact-version@v1
         with:
-          cloudbees-url: "https://api.saas-qa.beescloud.com"
           artifact-id: ${{ steps.go-action.outputs.cbp_artifact_id }}
           labels: "test"
           operation: REMOVE
@@ -40,6 +38,5 @@ jobs:
       - name: Label Artifact -- add
         uses: cloudbees-io-gha/label-artifact-version@v1
         with:
-          cloudbees-url: "https://api.saas-qa.beescloud.com"
           artifact-id: ${{ steps.go-action.outputs.cbp_artifact_id }}
           labels: "New long"
