@@ -32,11 +32,11 @@ jobs:
         uses: cloudbees-io-gha/label-artifact-version@v1
         with:
           artifact-id: ${{ steps.go-action.outputs.cbp_artifact_id }}
-          labels: "test long 1 long long long"
+          labels: "test long"
           operation: REMOVE
 
       - name: Label Artifact -- add
         uses: cloudbees-io-gha/label-artifact-version@v1
         with:
           artifact-id: ${{ steps.go-action.outputs.cbp_artifact_id }}
-          labels: "New long"
+          labels: "New long long long long  long"
