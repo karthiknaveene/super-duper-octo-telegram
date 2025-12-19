@@ -22,7 +22,7 @@ jobs:
           version: 1.0.1
           url: "docker.io/example:latest"
           digest: "sha256:1234567890abcdefghijklmnopqrstuvwxyz1234567890abcdefghijklmnopqr"
-          label: "test long"
+          label: "test long long long long long "
           type: "docker"
 
       - name: Registered Build ArtifactId
@@ -39,4 +39,4 @@ jobs:
         uses: cloudbees-io-gha/label-artifact-version@v1
         with:
           artifact-id: ${{ steps.go-action.outputs.cbp_artifact_id }}
-          labels: "New long long long long  long"
+          labels: "New long 1"
